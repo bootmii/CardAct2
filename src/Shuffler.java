@@ -106,10 +106,11 @@ public class Shuffler {
 		int len = values1.length;
 		boolean[] matchFound = new boolean[len];
 		for(int ii=0; ii<len; ii++) {
+			matchFound[ii]=false;
 			for(int jj=0; jj<len; jj++)
-				if(values1[ii]==values2[jj])
+				if(values1[ii]==values2[jj]) matchFound[ii]=true;
 		}
-
+		return allTrue(matchFound);
 	}
 	private static boolean hasDuplicates(int[] values){
 		for(int ii=0; ii<values.length; ii++)
