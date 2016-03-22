@@ -88,15 +88,29 @@ public class Shuffler {
 			values[ii] = swap;
 		}
 	}
-	
+
 	public static String flip() {
 	  Random rr = new Random();
 	  int ii = rr.nextInt(3);
 	  switch(ii) {
-	  case 0:;
+	  case 0:; // FALL THRU
 	  case 1: return "heads";
 	  case 2: return "tails";
 	  default: return "";
-	  }	  
+	  }
+	}
+
+	public static boolean arePermutations(int[] values1, int[] values2){
+		if(hasDuplicates(values1)||hasDuplicates(values2)) return false;
+		if(values1.length!=values2.length) return false;
+		int len = values1.length;
+		for(int ii=0; ii<)
+
+	}
+	private static boolean hasDuplicates(int[] values){
+		for(int ii=0; ii<values.length; ii++)
+			for(int jj=ii+1; jj<values.length; jj++)
+				if(values[ii]==values[jj]) return true;
+		return false;
 	}
 }
