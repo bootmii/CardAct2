@@ -1,13 +1,14 @@
 /**
  * This class provides a convenient way to test shuffling methods.
  */
+import java.util.Random;
 public class Shuffler {
 
 	/**
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 4;
 
 
 	/**
@@ -55,15 +56,14 @@ public class Shuffler {
 		int[] valuesSecondHalf = new int[ //size of valuesSecondHalf follows
 				(values.length%2==0?values.length/2:values.length/2+1)
 		];
-		int[] newValues = new int[values.length];
 		for(int ii=0;ii<valuesFirstHalf.length;ii++)
 			valuesFirstHalf[ii] = values[ii];
 		for(int ii=values.length/2, jj=0; ii<values.length; ii++, jj++)
 			valuesSecondHalf[jj] = values[ii];
 		for(int ii=0; ii<values.length; ii++){
-			newValues[ii] = valuesSecondHalf[ii];
+			values[ii] = valuesSecondHalf[ii/2];
 			if(ii++==values.length) break; //postincrementation FTW
-			newValues[ii] = valuesFirstHalf[ii];
+			values[ii] = valuesFirstHalf[ii/2];
 		}
 	}
 
@@ -80,5 +80,23 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		Random rr = new Random();
+		for(int ii = values.length-1; ii>0; ii--){
+			int jj = rr.nextInt(ii);
+			int swap = values[jj];
+			values[jj] = values[ii];
+			values[ii] = swap;
+		}
+	}
+	
+	public static String flip() {
+	  Random rr = new Random();
+	  int ii = rr.nextInt(3);
+	  switch(ii) {
+	  case 0:;
+	  case 1: return "heads";
+	  case 2: return "tails";
+	  default: return "";
+	  }	  
 	}
 }
