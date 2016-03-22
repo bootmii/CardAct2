@@ -104,7 +104,11 @@ public class Shuffler {
 		if(hasDuplicates(values1)||hasDuplicates(values2)) return false;
 		if(values1.length!=values2.length) return false;
 		int len = values1.length;
-		for(int ii=0; ii<)
+		boolean[] matchFound = new boolean[len];
+		for(int ii=0; ii<len; ii++) {
+			for(int jj=0; jj<len; jj++)
+				if(values1[ii]==values2[jj])
+		}
 
 	}
 	private static boolean hasDuplicates(int[] values){
@@ -112,5 +116,8 @@ public class Shuffler {
 			for(int jj=ii+1; jj<values.length; jj++)
 				if(values[ii]==values[jj]) return true;
 		return false;
+	}
+	private static boolean allTrue(boolean[] flags){
+		for(boolean bb : flags) if(!bb) return false; return true;
 	}
 }
