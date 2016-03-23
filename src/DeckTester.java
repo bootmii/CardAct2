@@ -37,5 +37,8 @@ public class DeckTester {
 		System.out.println(poker.isEmpty());
 		System.out.println(poker.deal());
 		System.out.println(poker.size());
+		System.out.println(poker.toString());
+		poker.shuffle();
+		System.out.println(poker.toString());
 	}
 }

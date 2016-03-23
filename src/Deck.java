@@ -34,6 +34,7 @@ public class Deck {
 			for(int jj=0; jj<ranks.length; jj++)
 				cards.add(new Card(ranks[jj],suits[ii],values[jj]));
 		size = cards.size();
+		System.out.println(this);
 		shuffle();
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	}
