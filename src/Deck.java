@@ -68,7 +68,13 @@ public class Deck {
 		for(int ii = sz-1; ii > 0; ii--) {
 			int jj = rr.nextInt(ii);
 			Card cj = cards.get(jj);
+			Card ci = cards.get(ii);
+			Card swapj = new Card(cj.rank(), cj.suit(), cj.pointValue());
+			Card swapi = new Card(ci.rank(), ci.suit(), ci.pointValue());
+			cards.set(jj, swapi);
+			cards.set(ii, swapj);
 		}
+		size = sz;
 	}
 
 	/**
