@@ -219,6 +219,9 @@ public class ElevensBoard {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		if(selectedCards.size()!=2)return false;//not a pair, return false
+		return (cards[selectedCards.get(0)].pointValue()+
+		cards[selectedCards.get(1)].pointValue())==11;
 	}
 
 	/**
