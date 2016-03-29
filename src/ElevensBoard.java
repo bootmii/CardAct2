@@ -185,6 +185,7 @@ public class ElevensBoard {
 	 */
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+	  return containsPairSum11(selectedCards)||containsJQK(selectedCards);
 	}
 
 	/**
@@ -196,6 +197,9 @@ public class ElevensBoard {
 	 *         false otherwise.
 	 */
 	public boolean anotherPlayIsPossible() {
+	  int numOfJacks
+	  for(int ii=0; ii<BOARD_SIZE; ii++) {
+	  }
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 	}
 
@@ -233,6 +237,14 @@ public class ElevensBoard {
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
+		if(selectedCards.size()!=3)return false;//not a triplet
+		boolean hasJ = false, hasQ = false, hasK = false;
+		for(int ii=0; ii<3; ii++){
+		  hasJ = (hasJ ? hasJ : cards[selectedCards.get(ii)].rank()=="jack");
+		  hasQ = (hasQ ? hasQ : cards[selectedCards.get(ii)].rank()=="queen");
+		  hasK = (hasK ? hasK : cards[selectedCards.get(ii)].rank()=="king");
+		}
+		return hasJ && hasQ && hasK;
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 	}
 }
