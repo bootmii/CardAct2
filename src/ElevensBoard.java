@@ -220,7 +220,7 @@ public class ElevensBoard {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		if(selectedCards.size()!=2)return false;//not a pair, return false
+		if(selectedCards.size()<=2)return false;//not a pair, return false
 		return (cards[selectedCards.get(0)].pointValue()+
 		cards[selectedCards.get(1)].pointValue())==11;
 	}
@@ -234,7 +234,8 @@ public class ElevensBoard {
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
-		boolean hasJ = false, hasQ = false, hasK = false;
+		if(selectedCards.size()<=2) return false;
+	  boolean hasJ = false, hasQ = false, hasK = false;
 		for(int ii=0; ii<selectedCards.size(); ii++){
 		  hasJ = (hasJ ? hasJ : cards[selectedCards.get(ii)].rank()=="jack");
 		  hasQ = (hasQ ? hasQ : cards[selectedCards.get(ii)].rank()=="queen");
