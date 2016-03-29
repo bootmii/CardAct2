@@ -1,5 +1,6 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -197,6 +198,7 @@ public class ElevensBoard {
 	 *         false otherwise.
 	 */
 	public boolean anotherPlayIsPossible() {
+	  return isLegal(IntStream.range(0,BOARD_SIZE).boxed().collect(Collectors.toList()));
 	  /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 	}
 
@@ -220,9 +222,13 @@ public class ElevensBoard {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		if(selectedCards.size()<=2)return false;//not a pair, return false
-		return (cards[selectedCards.get(0)].pointValue()+
-		cards[selectedCards.get(1)].pointValue())==11;
+		if(selectedCards.size()<2)return false;//not a pair, return false
+		boolean cps11 = false;
+		for(int ii=0; ii<selectedCards.size()-1; ii++)
+		  for(int jj=ii+1; jj<selectedCards.size(); jj++)
+		    if(cards[selectedCards.get(ii)].pointValue()+
+		        cards[selectedCards.get(jj)].pointValue()==11) cps11 = true;
+		return cps11;
 	}
 
 	/**
@@ -234,7 +240,7 @@ public class ElevensBoard {
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
-		if(selectedCards.size()<=2) return false;
+		if(selectedCards.size()<3) return false;
 	  boolean hasJ = false, hasQ = false, hasK = false;
 		for(int ii=0; ii<selectedCards.size(); ii++){
 		  hasJ = (hasJ ? hasJ : cards[selectedCards.get(ii)].rank()=="jack");
