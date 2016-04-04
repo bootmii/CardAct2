@@ -1,6 +1,4 @@
-import java.util.List;
-import java.util.ArrayList;
-
+import java.util.*;
 /**
  * This class represents a Board that can be used in a collection
  * of solitaire games similar to Elevens.  The variants differ in
