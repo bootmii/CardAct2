@@ -79,6 +79,14 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		for(int ii=0; ii<selectedCards.size()-1; ii++) {
+			for(int jj=ii+1; jj<selectedCards.size(); jj++) {
+				Card card1 = cardAt(selectedCards.get(ii));
+				Card card2 = cardAt(selectedCards.get(jj));
+				if(card1.pointValue()+card2.pointValue()==11) return true;
+			}
+		}
+		return false;
 	}
 
 	/**
