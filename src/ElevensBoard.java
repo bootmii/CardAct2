@@ -99,5 +99,14 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		boolean hasJ = false, hasQ = false, hasK = false;
+		for(int ii=0; ii<selectedCards.size(); ii++) {
+			switch(cardAt(selectedCards.get(ii)).rank()) {
+			case "jack": hasJ = true; break;
+			case "queen": hasQ = true; break;
+			case "king": hasK = true; break;
+			}
+		}
+		return hasJ && hasQ && hasK;
 	}
 }
