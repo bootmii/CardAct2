@@ -105,6 +105,7 @@ public class ElevensBoard extends Board {
 			case "jack": hasJ = true; break;
 			case "queen": hasQ = true; break;
 			case "king": hasK = true; break;
+			default: break;
 			}
 		}
 		return hasJ && hasQ && hasK;
