@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * The Deck class represents a shuffled deck of cards.
@@ -30,13 +31,13 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		cards = new ArrayList<Card>();
-		for(int ii=0; ii<suits.length; ii++)
-			for(int jj=0; jj<ranks.length; jj++)
-				cards.add(new Card(ranks[jj],suits[ii],values[jj]));
+		for (int j = 0; j < ranks.length; j++) {
+			for (String suitString : suits) {
+				cards.add(new Card(ranks[j], suitString, values[j]));
+			}
+		}
 		size = cards.size();
-		System.out.println(this);
 		shuffle();
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	}
 
 
@@ -45,10 +46,10 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		return size==0;
+		return size == 0;
 	}
 
-	/**g
+	/**
 	 * Accesses the number of undealt cards in this deck.
 	 * @return the number of undealt cards in this deck.
 	 */
@@ -61,19 +62,15 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		Random rr = new Random();
-		int sz = cards.size();
-		for(int ii = sz-1; ii > 0; ii--) {
-			int jj = rr.nextInt(ii);
-			Card cj = cards.get(jj);
-			Card ci = cards.get(ii);
-			Card swapj = new Card(cj.rank(), cj.suit(), cj.pointValue());
-			Card swapi = new Card(ci.rank(), ci.suit(), ci.pointValue());
-			cards.set(jj, swapi);
-			cards.set(ii, swapj);
+		for (int k = cards.size() - 1; k > 0; k--) {
+			int howMany = k + 1;
+			int start = 0;
+			int randPos = (int) (Math.random() * howMany) + start;
+			Card temp = cards.get(k);
+			cards.set(k, cards.get(randPos));
+			cards.set(randPos, temp);
 		}
-		size = sz;
+		size = cards.size();
 	}
 
 	/**
@@ -82,7 +79,12 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		return cards.get(--size);
+		if (isEmpty()) {
+			return null;
+		}
+		size--;
+		Card c = cards.get(size);
+		return c;
 	}
 
 	/**
