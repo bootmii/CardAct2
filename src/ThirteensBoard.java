@@ -9,7 +9,7 @@ public class ThirteensBoard extends Board {
 	/**
 	 * The size (number of cards) on the board.
 	 */
-	private static final int BOARD_SIZE = 9;
+	private static final int BOARD_SIZE = 10;
 
 	/**
 	 * The ranks of the cards for this game to be sent to the deck.
@@ -28,7 +28,7 @@ public class ThirteensBoard extends Board {
 	 * The values of the cards for this game to be sent to the deck.
 	 */
 	private static final int[] POINT_VALUES =
-		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
+		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 0};
 
 	/**
 	 * Flag used to control debugging print statements.
@@ -55,8 +55,8 @@ public class ThirteensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		switch(selectedCards.size()) {
-		case 2: return containsPairSum11(selectedCards);
-		case 3: return containsJQK(selectedCards);
+		case 2: return containsPairSum13(selectedCards);
+		case 1: return containsK(selectedCards);
 		default: return false;
 		}
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
@@ -72,7 +72,7 @@ public class ThirteensBoard extends Board {
 	 */
 	@Override
 	public boolean anotherPlayIsPossible() {
-		return containsPairSum11(cardIndexes())||containsJQK(cardIndexes());
+		return containsPairSum13(cardIndexes())||containsK(cardIndexes());
 	}
 
 	/**
@@ -83,13 +83,13 @@ public class ThirteensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              contain an 11-pair; false otherwise.
 	 */
-	private boolean containsPairSum11(List<Integer> selectedCards) {
+	private boolean containsPairSum13(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		for(int ii=0; ii<selectedCards.size()-1; ii++) {
 			for(int jj=ii+1; jj<selectedCards.size(); jj++) {
 				Card card1 = cardAt(selectedCards.get(ii));
 				Card card2 = cardAt(selectedCards.get(jj));
-				if(card1.pointValue()+card2.pointValue()==11) return true;
+				if(card1.pointValue()+card2.pointValue()==13) return true;
 			}
 		}
 		return false;
@@ -103,17 +103,11 @@ public class ThirteensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
-	private boolean containsJQK(List<Integer> selectedCards) {
+	private boolean containsK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		boolean hasJ = false, hasQ = false, hasK = false;
-		for(int ii=0; ii<selectedCards.size(); ii++) {
-			switch(cardAt(selectedCards.get(ii)).rank()) {
-			case "jack": hasJ = true; break;
-			case "queen": hasQ = true; break;
-			case "king": hasK = true; break;
-			default: break;
-			}
-		}
-		return hasJ && hasQ && hasK;
+		boolean hasK = false;
+		for(int ii=0; ii<selectedCards.size(); ii++)
+			if(cardAt(selectedCards.get(ii)).rank()=="king") hasK = true;
+		return hasK;
 	}
 }
