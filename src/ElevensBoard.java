@@ -31,7 +31,7 @@ public class ElevensBoard extends Board {
 	private static final int[] POINT_VALUES =
 		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
 	
-	private static final boolean I_AM_DEBUGGING = true;
+	private static final boolean I_AM_DEBUGGING = false;
 
 	/**
 	 * Creates a new <code>ElevensBoard</code> instance.
