@@ -129,7 +129,7 @@ public class ElevensBoard extends Board {
 	 */
 	public boolean playIfPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 11 *** */
-		List<Integer> cIdx = cardIndexes();
+		return playPairSum11IfPossible()||playJQKIfPossible();
 		
 	}
 
@@ -156,6 +156,10 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean playJQKIfPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 11 *** */
-		return false; // REPLACE !
+		List<Integer> jqkIdx = findJQK(cardIndexes());
+		if(!jqkIdx.isEmpty()) {
+			replaceSelectedCards(jqkIdx);
+			return true;
+		} else return false;
 	}
 }
