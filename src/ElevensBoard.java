@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -87,11 +89,11 @@ public class ElevensBoard extends Board {
 			for (int sk2 = sk1 + 1; sk2 < selectedCards.size(); sk2++) {
 				int k2 = selectedCards.get(sk2).intValue();
 				if (cardAt(k1).pointValue() + cardAt(k2).pointValue() == 11) {
-					return true;
+					return Arrays.asList(k1, k2);
 				}
 			}
 		}
-		return false;
+		return Collections.emptyList();
 	}
 
 	/**
