@@ -129,7 +129,8 @@ public class ElevensBoard extends Board {
 	 */
 	public boolean playIfPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 11 *** */
-		return false; // REPLACE !
+		List<Integer> cIdx = cardIndexes();
+		
 	}
 
 	/**
@@ -140,7 +141,11 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean playPairSum11IfPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 11 *** */
-		 return false; // REPLACE !
+		List<Integer> pairIdx = findPairSum11(cardIndexes());
+		if(!pairIdx.isEmpty()) {
+			replaceSelectedCards(pairIdx);
+			return true;
+		} else return false;
 	}
 
 	/**
