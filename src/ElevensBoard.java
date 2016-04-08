@@ -80,7 +80,7 @@ public class ElevensBoard extends Board {
 	 * @return a list of the indexes of an 11-pair, if an 11-pair was found;
 	 *         an empty list, if an 11-pair was not found.
 	 */
-	private boolean containsPairSum11(List<Integer> selectedCards) {
+	private List<Integer> containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE CHANGED INTO findPairSum11 IN ACTIVITY 11 *** */
 		for (int sk1 = 0; sk1 < selectedCards.size(); sk1++) {
 			int k1 = selectedCards.get(sk1).intValue();
